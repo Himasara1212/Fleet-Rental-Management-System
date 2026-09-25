@@ -24,14 +24,36 @@ public abstract class Vehicle implements Reportable {
 
     public abstract double calculateRentalCost(int days);
 
-    public String getVehicleId() { return id; }
-    public String getRegistrationNumber() { return reg; }
-    public String getBrand() { return brand; }
-    public String getModel() { return model; }
-    public double getDailyRate() { return rate; }
-    public FuelType getFuelType() { return fuel; }
-    public RentalStatus getStatus() { return status; }
-    public void setStatus(RentalStatus s) { this.status = s; }
+    public String getVehicleId() {
+        return id; }
+
+    public String getRegistrationNumber() {
+        return reg;
+    }
+
+    public String getBrand() {
+        return brand;
+    }
+
+    public String getModel() {
+        return model;
+    }
+
+    public double getDailyRate() {
+        return rate;
+    }
+
+    public FuelType getFuelType() {
+        return fuel;
+    }
+
+    public RentalStatus getStatus() {
+        return status;
+    }
+
+    public void setStatus(RentalStatus s) {
+        this.status = s;
+    }
 
     public String getSummary() {
         return id + " - " + brand + " " + model;
