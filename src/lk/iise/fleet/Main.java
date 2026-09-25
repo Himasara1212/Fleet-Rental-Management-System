@@ -17,7 +17,6 @@ public class Main {
         currentUser = null;
     }
 
-
     public static void main(String[] args) {
         Main app = new Main();
         app.run();
