@@ -2,11 +2,13 @@ package lk.iise.fleet;
 
 public class Car extends Vehicle {
 
-    public Car(String reg, String brand, String model, double rate, FuelType fuel) {
-        super(reg, brand, model, rate, fuel);
+    public Car(String registrationNumber, String brand, String model,
+               double dailyRate, FuelType fuelType) {
+        super(registrationNumber, brand, model, dailyRate, fuelType);
     }
 
-    public double calculateRentalCost(int days) {
-        return getDailyRate() * days * getFuelType().getCostMultiplier();
+    @Override
+    public double calculateRentalCost(int rentalDays) {
+        return 0;
     }
 }

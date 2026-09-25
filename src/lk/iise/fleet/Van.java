@@ -1,19 +1,23 @@
 package lk.iise.fleet;
 
 public class Van extends Vehicle {
-    private int seats;
+    private int passengerCapacity;
 
-    public Van(String reg, String brand, String model, double rate, FuelType fuel, int seats) {
-        super(reg, brand, model, rate, fuel);
-        this.seats = seats;
+    public Van(String registrationNumber, String brand, String model, double dailyRate, FuelType fuelType, int passengerCapacity) {
+        super(registrationNumber, brand, model, dailyRate, fuelType);
+        this.passengerCapacity = passengerCapacity;
     }
 
     public int getPassengerCapacity() {
-        return seats;
+        return passengerCapacity;
     }
 
-    public double calculateRentalCost(int days) {
-        double base = getDailyRate() * days * getFuelType().getCostMultiplier();
-        return base + (getDailyRate() * 0.20);
+    public void setPassengerCapacity(int passengerCapacity) {
+        this.passengerCapacity = passengerCapacity;
+    }
+
+    @Override
+    public double calculateRentalCost(int rentalDays) {
+        return 0;
     }
 }

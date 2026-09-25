@@ -1,69 +1,99 @@
 package lk.iise.fleet;
 
 public abstract class Vehicle implements Reportable {
-    private static int n = 1001;
+    private static int counter = 1000;
 
-    private String id;
-    private String reg;
+    private String vehicleId;
+    private String registrationNumber;
     private String brand;
     private String model;
-    private double rate;
-    private FuelType fuel;
+    private double dailyRate;
+    private FuelType fuelType;
     private RentalStatus status;
 
-    public Vehicle(String reg, String brand, String model, double rate, FuelType fuel) {
-        this.id = "VEH-" + n;
-        n = n + 1;
-        this.reg = reg;
+    public Vehicle(String registrationNumber, String brand, String model,
+                   double dailyRate, FuelType fuelType) {
+        this.vehicleId = "VEH-" + (++counter);
+        this.registrationNumber = registrationNumber;
         this.brand = brand;
         this.model = model;
-        this.rate = rate;
-        this.fuel = fuel;
+        this.dailyRate = dailyRate;
+        this.fuelType = fuelType;
         this.status = RentalStatus.AVAILABLE;
     }
 
-    public abstract double calculateRentalCost(int days);
-
     public String getVehicleId() {
-        return id; }
+        return vehicleId;
+    }
 
     public String getRegistrationNumber() {
-        return reg;
+        return registrationNumber;
+    }
+
+    public void setRegistrationNumber(String registrationNumber) {
+        this.registrationNumber = registrationNumber;
     }
 
     public String getBrand() {
         return brand;
     }
 
+    public void setBrand(String brand) {
+        this.brand = brand;
+    }
+
     public String getModel() {
         return model;
     }
 
+    public void setModel(String model) {
+        this.model = model;
+    }
+
     public double getDailyRate() {
-        return rate;
+        return dailyRate;
+    }
+
+    public void setDailyRate(double dailyRate) {
+        this.dailyRate = dailyRate;
     }
 
     public FuelType getFuelType() {
-        return fuel;
+        return fuelType;
+    }
+
+    public void setFuelType(FuelType fuelType) {
+        this.fuelType = fuelType;
     }
 
     public RentalStatus getStatus() {
         return status;
     }
 
-    public void setStatus(RentalStatus s) {
-        this.status = s;
+    public void setStatus(RentalStatus status) {
+        this.status = status;
     }
 
+    public abstract double calculateRentalCost(int rentalDays);
+
+    @Override
     public String getSummary() {
-        return id + " - " + brand + " " + model;
+        return vehicleId + " - " + brand + " " + model + " [" + status + "]";
     }
 
+    @Override
     public String getReportCategory() {
         return "VEHICLE";
     }
 
+    @Override
     public String toString() {
-        return id + " | " + reg + " | " + brand + " " + model + " | " + fuel + " | " + status;
+        return "Vehicle ID: " + vehicleId +
+                ", Reg: " + registrationNumber +
+                ", Brand: " + brand +
+                ", Model: " + model +
+                ", Daily Rate: " + dailyRate +
+                ", Fuel: " + fuelType +
+                ", Status: " + status;
     }
 }

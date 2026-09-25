@@ -1,39 +1,42 @@
 package lk.iise.fleet;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class UserManager {
-    private ArrayList<User> userList = new ArrayList<User>();
+    private List<User> users;
+
+    public UserManager() {
+        this.users = new ArrayList<>();
+    }
+
 
     public User registerUser(String username, String password, String fullName) {
-        User found = findByUsername(username);
-
-        if (found != null) {
+        if (findByUsername(username) != null) {
             System.out.println("Username already taken");
             return null;
         }
-
-        User newUser = new User(username, password, fullName);
-        userList.add(newUser);
-        System.out.println("User registered successfully!");
-        return newUser;
+        User user = new User(username, password, fullName);
+        users.add(user);
+        System.out.println("Registration successful!");
+        return user;
     }
 
-    public User login(String username, String password) {
-        for (int i = 0; i < userList.size(); i++) {
-            User u = userList.get(i);
 
-            if (u.getUsername().equals(username) && u.getPassword().equals(password)) {
-                return u;
+    public User login(String username, String password) {
+        for (User user : users) {
+            if (user.getUsername().equals(username) && user.getPassword().equals(password)) {
+                return user;
             }
         }
         return null;
     }
 
+
     public User findByUsername(String username) {
-        for (int i = 0; i < userList.size(); i++) {
-            if (userList.get(i).getUsername().equals(username)) {
-                return userList.get(i);
+        for (User user : users) {
+            if (user.getUsername().equals(username)) {
+                return user;
             }
         }
         return null;
