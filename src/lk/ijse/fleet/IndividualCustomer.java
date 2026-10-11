@@ -1,4 +1,4 @@
-package lk.iise.fleet;
+package lk.ijse.fleet;
 
 public class IndividualCustomer extends Customer {
     private int loyaltyPoints;

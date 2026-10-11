@@ -1,4 +1,4 @@
-package lk.iise.fleet;
+package lk.ijse.fleet;
 
 public abstract class Vehicle implements Reportable {
     private static int counter = 1000;
@@ -11,8 +11,9 @@ public abstract class Vehicle implements Reportable {
     private FuelType fuelType;
     private RentalStatus status;
 
-    public Vehicle(String registrationNumber, String brand, String model, double dailyRate, FuelType fuelType) {
-        this.vehicleId = "V-" + (++counter);
+    public Vehicle(String registrationNumber, String brand, String model,
+                   double dailyRate, FuelType fuelType) {
+        this.vehicleId = "VEH-" + (++counter);
         this.registrationNumber = registrationNumber;
         this.brand = brand;
         this.model = model;

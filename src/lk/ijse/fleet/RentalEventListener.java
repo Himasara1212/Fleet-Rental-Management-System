@@ -1,4 +1,4 @@
-package lk.iise.fleet;
+package lk.ijse.fleet;
 
 @FunctionalInterface
 public interface RentalEventListener {

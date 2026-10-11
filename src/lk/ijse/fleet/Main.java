@@ -1,4 +1,4 @@
-package lk.iise.fleet;
+package lk.ijse.fleet;
 
 import java.util.List;
 import java.util.Scanner;
@@ -7,7 +7,7 @@ public class Main {
     private FleetManager fleetManager;
     private UserManager userManager;
     private Scanner scanner;
-    private User loggedInUser;
+    private SystemUser loggedInUser;
 
     public Main() {
         this.fleetManager = new FleetManager();
@@ -60,10 +60,11 @@ public class Main {
                     String u = scanner.nextLine();
                     System.out.print("Password: ");
                     String p = scanner.nextLine();
-                    User user = userManager.login(u, p);
+                    SystemUser user = userManager.login(u, p);
                     if (user != null) {
                         loggedInUser = user;
-                        System.out.println("Login successful!");
+                        System.out.println("Welcome, " + user.getFullName() +
+                                "! Loading fleet dashboard...");
                         showMainMenu();
                     } else {
                         System.out.println("Invalid username or password");
@@ -94,8 +95,6 @@ public class Main {
     public void showMainMenu() {
         while (loggedInUser != null) {
             System.out.println("\n========================================================");
-            System.out.println("Welcome, " + loggedInUser.getFullName() + "...");
-            System.out.println("========================================================");
             System.out.println("FRMS MAIN MENU | Logged in as: " + loggedInUser.getFullName());
             System.out.println("========================================================");
             System.out.println("[1] Add Vehicle");
@@ -120,36 +119,16 @@ public class Main {
             }
 
             switch (choice) {
-                case 1:
-                    addVehicle();
-                    break;
-                case 2:
-                    addCustomer();
-                    break;
-                case 3:
-                    viewAvailableVehicles();
-                    break;
-                case 4:
-                    createRental();
-                    break;
-                case 5:
-                    returnVehicle();
-                    break;
-                case 6:
-                    viewRevenueReport();
-                    break;
-                case 7:
-                    viewVehiclesByFuelType();
-                    break;
-                case 8:
-                    fleetManager.printAllReportables();
-                    break;
-                case 9:
-                    viewAllCustomers();
-                    break;
-                case 10:
-                    viewAllAgreements();
-                    break;
+                case 1: addVehicle(); break;
+                case 2: addCustomer(); break;
+                case 3: viewAvailableVehicles(); break;
+                case 4: createRental(); break;
+                case 5: returnVehicle(); break;
+                case 6: viewRevenueReport(); break;
+                case 7: viewVehiclesByFuelType(); break;
+                case 8: fleetManager.printAllReportables(); break;
+                case 9: viewAllCustomers(); break;
+                case 10: viewAllAgreements(); break;
                 case 0:
                     loggedInUser = null;
                     System.out.println("Logged out successfully.");
@@ -300,8 +279,8 @@ public class Main {
             return;
         }
         System.out.println("\n--- Available Vehicles ---");
-        for (int i = 0; i < available.size(); i++) {
-            System.out.println(available.get(i));
+        for (Vehicle v : available) {
+            System.out.println(v);
         }
     }
 
@@ -341,7 +320,7 @@ public class Main {
         System.out.println("\n========================================================");
         System.out.println("FLEET REVENUE REPORT");
         System.out.println("========================================================");
-        System.out.println("Total Revenue: " + revenue);
+        System.out.println("Total Revenue: " + String.format("%,.2f", revenue));
         System.out.println("--------------------------------------------------------");
     }
 
@@ -353,8 +332,8 @@ public class Main {
             System.out.println("No vehicles with fuel type " + fuel);
             return;
         }
-        for (int i = 0; i < list.size(); i++) {
-            System.out.println(list.get(i));
+        for (Vehicle v : list) {
+            System.out.println(v);
         }
     }
 
@@ -364,8 +343,8 @@ public class Main {
             System.out.println("No customers registered.");
             return;
         }
-        for (int i = 0; i < list.size(); i++) {
-            System.out.println(list.get(i));
+        for (Customer c : list) {
+            System.out.println(c);
         }
     }
 
@@ -375,8 +354,8 @@ public class Main {
             System.out.println("No rental agreements.");
             return;
         }
-        for (int i = 0; i < list.size(); i++) {
-            System.out.println(list.get(i));
+        for (RentalAgreement a : list) {
+            System.out.println(a);
         }
     }
 }

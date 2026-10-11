@@ -1,4 +1,4 @@
-package lk.iise.fleet;
+package lk.ijse.fleet;
 
 public class InsufficientCreditException extends Exception {
     public InsufficientCreditException(String message) {

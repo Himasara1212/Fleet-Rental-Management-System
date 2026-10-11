@@ -1,4 +1,4 @@
-package lk.iise.fleet;
+package lk.ijse.fleet;
 
 public class RentalAgreement {
     private static int counter = 1000;
@@ -17,7 +17,7 @@ public class RentalAgreement {
         this.rentalDays = rentalDays;
         this.daysElapsed = 0;
 
-        // Cost eka calculate karanna
+        // Calculate the total cost using polymorphic cost and discount formulas
         double subtotal = vehicle.calculateRentalCost(rentalDays);
         this.totalCost = customer.applyDiscount(subtotal);
     }
@@ -52,10 +52,18 @@ public class RentalAgreement {
 
     @Override
     public String toString() {
-        return "Agreement ID: " + agreementId +
-                ", Vehicle: " + vehicle.getVehicleId() +
-                ", Customer: " + customer.getCustomerId() +
-                ", Days: " + rentalDays +
-                ", Total Cost: " + totalCost;
+        return "\n================================================================\n" +
+                "RENTAL AGREEMENT RECEIPT\n" +
+                "================================================================\n" +
+                "Agreement ID : " + agreementId + "\n" +
+                "Vehicle      : " + vehicle.getVehicleId() + " - " +
+                vehicle.getBrand() + " " + vehicle.getModel() +
+                " (" + vehicle.getClass().getSimpleName() + ")\n" +
+                "Customer     : " + customer.getCustomerId() + " - " +
+                customer.getFullName() +
+                " (" + customer.getClass().getSimpleName() + ")\n" +
+                "Rental Days  : " + rentalDays + "\n" +
+                "Total Cost   : " + String.format("%,.2f", totalCost) + "\n" +
+                "================================================================";
     }
 }

@@ -1,4 +1,4 @@
-package lk.iise.fleet;
+package lk.ijse.fleet;
 
 public abstract class Customer implements Reportable {
     private static int counter = 1000;
@@ -8,7 +8,7 @@ public abstract class Customer implements Reportable {
     private String contactNumber;
 
     public Customer(String fullName, String contactNumber) {
-        this.customerId = "C-" + (++counter);
+        this.customerId = "CUS-" + (++counter);
         this.fullName = fullName;
         this.contactNumber = contactNumber;
     }

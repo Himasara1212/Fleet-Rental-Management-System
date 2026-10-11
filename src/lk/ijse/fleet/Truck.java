@@ -1,4 +1,4 @@
-package lk.iise.fleet;
+package lk.ijse.fleet;
 
 public class Truck extends Vehicle {
     private double cargoCapacityTons;

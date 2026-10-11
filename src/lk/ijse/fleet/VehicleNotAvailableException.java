@@ -1,4 +1,4 @@
-package lk.iise.fleet;
+package lk.ijse.fleet;
 
 public class VehicleNotAvailableException extends Exception {
     public VehicleNotAvailableException(String message) {

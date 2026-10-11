@@ -1,4 +1,4 @@
-package lk.iise.fleet;
+package lk.ijse.fleet;
 
 public class OverdueReminderWorker implements Runnable {
     private FleetManager fm;

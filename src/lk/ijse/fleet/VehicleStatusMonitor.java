@@ -1,4 +1,4 @@
-package lk.iise.fleet;
+package lk.ijse.fleet;
 
 public class VehicleStatusMonitor implements Runnable {
     private final FleetManager fleetManager;
