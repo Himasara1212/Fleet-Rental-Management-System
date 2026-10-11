@@ -1,18 +1,20 @@
 package lk.iise.fleet;
 
 public class VehicleStatusMonitor implements Runnable {
-    private FleetManager fm;
+    private final FleetManager fleetManager;
 
-    public VehicleStatusMonitor(FleetManager fm) {
-        this.fm = fm;
+    public VehicleStatusMonitor(FleetManager fleetManager) {
+        this.fleetManager = fleetManager;
     }
 
+    @Override
     public void run() {
         while (true) {
             try {
                 Thread.sleep(5000);
-                fm.printFleetStatus();
+                fleetManager.printFleetStatus();
             } catch (InterruptedException e) {
+                Thread.currentThread().interrupt();
                 break;
             }
         }

@@ -18,6 +18,16 @@ public class IndividualCustomer extends Customer {
 
     @Override
     public double applyDiscount(double subtotal) {
-        return subtotal;
+        double discountRate;
+
+        if (loyaltyPoints < 100) {
+            discountRate = 0.00;
+        } else if (loyaltyPoints < 300) {
+            discountRate = 0.05;
+        } else {
+            discountRate = 0.10;
+        }
+
+        return subtotal * (1 - discountRate);
     }
 }

@@ -32,6 +32,6 @@ public class CorporateCustomer extends Customer {
 
     @Override
     public double applyDiscount(double subtotal) {
-        return subtotal;
+        return subtotal * 0.85;
     }
 }

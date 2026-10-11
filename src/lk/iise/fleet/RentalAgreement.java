@@ -15,8 +15,11 @@ public class RentalAgreement {
         this.vehicle = vehicle;
         this.customer = customer;
         this.rentalDays = rentalDays;
-        this.totalCost = 0;
         this.daysElapsed = 0;
+
+        // Cost eka calculate karanna
+        double subtotal = vehicle.calculateRentalCost(rentalDays);
+        this.totalCost = customer.applyDiscount(subtotal);
     }
 
     public String getAgreementId() {

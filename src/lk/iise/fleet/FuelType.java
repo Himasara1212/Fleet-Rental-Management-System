@@ -6,7 +6,7 @@ public enum FuelType {
     ELECTRIC(0.75),
     HYBRID(0.85);
 
-    private double costMultiplier;
+    private final double costMultiplier;
 
     FuelType(double costMultiplier) {
         this.costMultiplier = costMultiplier;

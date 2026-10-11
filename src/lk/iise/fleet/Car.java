@@ -9,6 +9,6 @@ public class Car extends Vehicle {
 
     @Override
     public double calculateRentalCost(int rentalDays) {
-        return 0;
+        return getDailyRate() * rentalDays * getFuelType().getCostMultiplier();
     }
 }

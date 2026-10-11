@@ -3,7 +3,8 @@ package lk.iise.fleet;
 public class Truck extends Vehicle {
     private double cargoCapacityTons;
 
-    public Truck(String registrationNumber, String brand, String model, double dailyRate, FuelType fuelType, double cargoCapacityTons) {
+    public Truck(String registrationNumber, String brand, String model,
+                 double dailyRate, FuelType fuelType, double cargoCapacityTons) {
         super(registrationNumber, brand, model, dailyRate, fuelType);
         this.cargoCapacityTons = cargoCapacityTons;
     }
@@ -18,6 +19,8 @@ public class Truck extends Vehicle {
 
     @Override
     public double calculateRentalCost(int rentalDays) {
-        return 0;
+        double baseCost = getDailyRate() * rentalDays * getFuelType().getCostMultiplier();
+        double cargoSurcharge = cargoCapacityTons * 10.00 * rentalDays;
+        return baseCost + cargoSurcharge;
     }
 }
